@@ -44,7 +44,7 @@ public class GUIAction
 {
     private final static Main plugin = Main.getInstance();
     
-    public final static Map<UUID, Object[]> repricing = new HashMap();
+    public final static Map<UUID, Object[]> repricing = new HashMap<UUID, Object[]>();
     
     @EventHandler
     public void onInvClose(InventoryCloseEvent e) {
@@ -144,7 +144,7 @@ public class GUIAction
                                     MarketGoods mg = market.getMarketGoods(ID);
                                     String topBidder = mg.getTopBidder();
                                     if (CurrencyManager.getMoney(player) < bid) {
-                                        Map<String, String> placeholders = new HashMap();
+                                        Map<String, String> placeholders = new HashMap<String, String>();
                                         placeholders.put("%Money_Needed%", String.valueOf(bid - CurrencyManager.getMoney(player)));
                                         placeholders.put("%money_needed%", String.valueOf(bid - CurrencyManager.getMoney(player)));
                                         player.sendMessage(Messages.getMessage("Need-More-Money", placeholders));
@@ -166,7 +166,7 @@ public class GUIAction
                                     CurrencyManager.removeMoney(player, bid);
                                     mg.setPrice(bid);
                                     mg.setTopBidder(player.getName() + ":" + player.getUniqueId());
-                                    Map<String, String> placeholders = new HashMap();
+                                    Map<String, String> placeholders = new HashMap<String, String>();
                                     placeholders.put("%Bid%", String.valueOf(bid));
                                     placeholders.put("%bid%", String.valueOf(bid));
                                     player.sendMessage(Messages.getMessage("Bid-Msg", placeholders));
@@ -363,6 +363,8 @@ public class GUIAction
                                                             market.removeGoods(mgs.getUID());
                                                             break;
                                                         }
+													default:
+														break;
                                                     }
                                                     player.sendMessage(Messages.getMessage("Admin-Force-Cancelled"));
                                                     playClick(player);
@@ -448,6 +450,8 @@ public class GUIAction
                                                     openBuying(player, mgs.getUID());
                                                     break;
                                                 }
+											default:
+												break;
                                             }
                                             return;
                                         }
@@ -495,7 +499,7 @@ public class GUIAction
                                 if (CurrencyManager.getMoney(player) < mg.getPrice()) {
                                     playClick(player);
                                     player.closeInventory();
-                                    HashMap<String, String> placeholders = new HashMap();
+                                    HashMap<String, String> placeholders = new HashMap<String, String>();
                                     placeholders.put("%Money_Needed%", String.valueOf(mg.getPrice() - CurrencyManager.getMoney(player)));
                                     placeholders.put("%money_needed%", String.valueOf(mg.getPrice() - CurrencyManager.getMoney(player)));
                                     player.sendMessage(Messages.getMessage("Need-More-Money", placeholders));
@@ -505,7 +509,7 @@ public class GUIAction
                                 Bukkit.getPluginManager().callEvent(new AuctionBuyEvent(player, mg, mg.getPrice()));
                                 CurrencyManager.removeMoney(player, mg.getPrice());
                                 CurrencyManager.addMoney(PluginControl.getOfflinePlayer(owner), mg.getPrice());
-                                Map<String, String> placeholders = new HashMap();
+                                Map<String, String> placeholders = new HashMap<String, String>();
                                 placeholders.put("%Price%", String.valueOf(mg.getPrice()));
                                 placeholders.put("%price%", String.valueOf(mg.getPrice()));
                                 placeholders.put("%Player%", player.getName());
@@ -560,7 +564,7 @@ public class GUIAction
                                 }
                                 UUID owner = mg.getItemOwner().getUUID();
                                 Bukkit.getPluginManager().callEvent(new AuctionSellEvent(player, mg, mg.getReward()));
-                                HashMap<String, String> placeholders = new HashMap();
+                                HashMap<String, String> placeholders = new HashMap<String, String>();
                                 placeholders.put("%reward%", String.valueOf(mg.getReward()));
                                 placeholders.put("%reward%", String.valueOf(mg.getReward()));
                                 placeholders.put("%Player%", player.getName());
@@ -619,7 +623,7 @@ public class GUIAction
                                 }
                                 switch (mg.getShopType()) {
                                     case BID: {
-                                        Map<String, String> placeholders = new HashMap();
+                                        Map<String, String> placeholders = new HashMap<String, String>();
                                         try {
                                             placeholders.put("%item%", mg.getItem().getItemMeta().hasDisplayName() ? mg.getItem().getItemMeta().getDisplayName() : (String) mg.getItem().getClass().getMethod("getI18NDisplayName").invoke(mg.getItem()));
                                         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
@@ -644,7 +648,7 @@ public class GUIAction
                                     case BUY: {
                                         if (Repricing) {
                                             repricing.put(player.getUniqueId(), new Object[] {mg, String.valueOf(System.currentTimeMillis() + (config.getInt("Settings.Repricing-Timeout") * 1000))});
-                                            Map<String, String> placeholders = new HashMap();
+                                            Map<String, String> placeholders = new HashMap<String, String>();
                                             try {
                                                 placeholders.put("%item%", mg.getItem().getItemMeta().hasDisplayName() ? mg.getItem().getItemMeta().getDisplayName() : (String) mg.getItem().getClass().getMethod("getI18NDisplayName").invoke(mg.getItem()));
                                             } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
@@ -656,7 +660,7 @@ public class GUIAction
                                             player.closeInventory();
                                             return;
                                         }
-                                        Map<String, String> placeholders = new HashMap();
+                                        Map<String, String> placeholders = new HashMap<String, String>();
                                         placeholders.put("%reward%", String.valueOf(mg.getReward()));
                                         placeholders.put("%reward%", String.valueOf(mg.getReward()));
                                         try {
@@ -676,7 +680,7 @@ public class GUIAction
                                     case SELL: {
                                         if (Repricing) {
                                             repricing.put(player.getUniqueId(), new Object[] {mg, String.valueOf(System.currentTimeMillis() + (config.getInt("Settings.Repricing-Timeout") * 1000))});
-                                            Map<String, String> placeholders = new HashMap();
+                                            Map<String, String> placeholders = new HashMap<String, String>();
                                             try {
                                                 placeholders.put("%item%", mg.getItem().getItemMeta().hasDisplayName() ? mg.getItem().getItemMeta().getDisplayName() : (String) mg.getItem().getClass().getMethod("getI18NDisplayName").invoke(mg.getItem()));
                                             } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
@@ -688,7 +692,7 @@ public class GUIAction
                                             player.closeInventory();
                                             return;
                                         }
-                                        Map<String, String> placeholders = new HashMap();
+                                        Map<String, String> placeholders = new HashMap<String, String>();
                                         try {
                                             placeholders.put("%item%", mg.getItem().getItemMeta().hasDisplayName() ? mg.getItem().getItemMeta().getDisplayName() : (String) mg.getItem().getClass().getMethod("getI18NDisplayName").invoke(mg.getItem()));
                                         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
@@ -705,6 +709,8 @@ public class GUIAction
                                         openPlayersCurrentList(player, 1);
                                         return;
                                     }
+								default:
+									break;
                                 }
                                 return;
                             }
@@ -800,7 +806,7 @@ public class GUIAction
         if (repricing.get(p.getUniqueId()) != null) {
             ProtectedConfiguration config = Files.CONFIG.getFile();
             if (!PluginControl.isNumber(e.getMessage())) {
-                Map<String, String> placeholders = new HashMap();
+                Map<String, String> placeholders = new HashMap<String, String>();
                 placeholders.put("%Arg%", e.getMessage());
                 placeholders.put("%arg%", e.getMessage());
                 p.sendMessage(Messages.getMessage("Not-A-Valid-Number", placeholders));
@@ -819,7 +825,7 @@ public class GUIAction
                 switch (mg.getShopType()) {
                     case BUY: {
                         if (money < config.getDouble("Settings.Minimum-Buy-Reward")) {
-                            Map<String, String> placeholders = new HashMap();
+                            Map<String, String> placeholders = new HashMap<String, String>();
                             placeholders.put("%reward%", String.valueOf(config.getDouble("Settings.Minimum-Buy-Reward")));
                             p.sendMessage(Messages.getMessage("Buy-Reward-To-Low", placeholders));
                             repricing.remove(p.getUniqueId());
@@ -827,7 +833,7 @@ public class GUIAction
                             return;
                         }
                         if (money > config.getLong("Settings.Max-Beginning-Buy-Reward")) {
-                            Map<String, String> placeholders = new HashMap();
+                            Map<String, String> placeholders = new HashMap<String, String>();
                             placeholders.put("%reward%", String.valueOf(config.getDouble("Settings.Max-Beginning-Buy-Reward")));
                             p.sendMessage(Messages.getMessage("Buy-Reward-To-High", placeholders));
                             repricing.remove(p.getUniqueId());
@@ -835,7 +841,7 @@ public class GUIAction
                             return;
                         }
                         if (CurrencyManager.getMoney(p) < money) { 
-                            HashMap<String, String> placeholders = new HashMap();
+                            HashMap<String, String> placeholders = new HashMap<String, String>();
                             placeholders.put("%Money_Needed%", String.valueOf(money - CurrencyManager.getMoney(p)));
                             placeholders.put("%money_needed%", String.valueOf(money - CurrencyManager.getMoney(p)));
                             p.sendMessage(Messages.getMessage("Need-More-Money", placeholders));
@@ -846,7 +852,7 @@ public class GUIAction
                         CurrencyManager.addMoney(p, mg.getReward());
                         CurrencyManager.removeMoney(p, money);
                         mg.setReward(money);
-                        Map<String, String> placeholders = new HashMap();
+                        Map<String, String> placeholders = new HashMap<String, String>();
                         placeholders.put("%money%", String.valueOf(money));
                         try {
                             placeholders.put("%item%", mg.getItem().getItemMeta().hasDisplayName() ? mg.getItem().getItemMeta().getDisplayName() : (String) mg.getItem().getClass().getMethod("getI18NDisplayName").invoke(mg.getItem()));
@@ -860,7 +866,7 @@ public class GUIAction
                     }
                     case SELL: {
                         if (money < config.getDouble("Settings.Minimum-Sell-Price")) {
-                            Map<String, String> placeholders = new HashMap();
+                            Map<String, String> placeholders = new HashMap<String, String>();
                             placeholders.put("%price%", String.valueOf(config.getDouble("Settings.Minimum-Sell-Price")));
                             p.sendMessage(Messages.getMessage("Sell-Price-To-Low", placeholders));
                             repricing.remove(p.getUniqueId());
@@ -868,7 +874,7 @@ public class GUIAction
                             return;
                         }
                         if (money > config.getLong("Settings.Max-Beginning-Sell-Price")) {
-                            Map<String, String> placeholders = new HashMap();
+                            Map<String, String> placeholders = new HashMap<String, String>();
                             placeholders.put("%price%", String.valueOf(config.getDouble("Settings.Max-Beginning-Sell-Price")));
                             p.sendMessage(Messages.getMessage("Sell-Price-To-High", placeholders));
                             repricing.remove(p.getUniqueId());
@@ -876,7 +882,7 @@ public class GUIAction
                             return;
                         }
                         mg.setPrice(money);
-                        Map<String, String> placeholders = new HashMap();
+                        Map<String, String> placeholders = new HashMap<String, String>();
                         placeholders.put("%money%", String.valueOf(money));
                         try {
                             placeholders.put("%item%", mg.getItem().getItemMeta().hasDisplayName() ? mg.getItem().getItemMeta().getDisplayName() : (String) mg.getItem().getClass().getMethod("getI18NDisplayName").invoke(mg.getItem()));
@@ -888,6 +894,8 @@ public class GUIAction
                         e.setCancelled(true);
                         break;
                     }
+				default:
+					break;
                 }
             } else {
                 p.sendMessage(Messages.getMessage("Repricing-Failed"));

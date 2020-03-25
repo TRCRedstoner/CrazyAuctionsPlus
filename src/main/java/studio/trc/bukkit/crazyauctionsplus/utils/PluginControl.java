@@ -44,6 +44,7 @@ import studio.trc.bukkit.crazyauctionsplus.utils.enums.ShopType;
 import studio.trc.bukkit.crazyauctionsplus.utils.FileManager.*;
 import studio.trc.bukkit.crazyauctionsplus.utils.enums.Messages;
 
+@SuppressWarnings("deprecation")
 public class PluginControl {
     
     public static String color(String msg) {
@@ -111,7 +112,7 @@ public class PluginControl {
     }
     
     public static ItemStack makeItem(String type, int amount, String name, List<String> lore) {
-        ArrayList<String> l = new ArrayList();
+        ArrayList<String> l = new ArrayList<String>();
         int ty = 0;
         if (type.contains(":")) {
             String[] b = type.split(":");
@@ -148,7 +149,7 @@ public class PluginControl {
     }
     
     public static ItemStack makeItem(Material material, int amount, int type, String name, List<String> lore) {
-        ArrayList<String> l = new ArrayList();
+        ArrayList<String> l = new ArrayList<String>();
         ItemStack item = new ItemStack(material, amount, (short) type);
         ItemMeta m = item.getItemMeta();
         m.setDisplayName(color(name));
@@ -170,7 +171,7 @@ public class PluginControl {
     }
     
     public static ItemStack addLore(ItemStack item, String i) {
-        List<String> lore = new ArrayList();
+        List<String> lore = new ArrayList<String>();
         ItemMeta m = item.getItemMeta();
         if (m == null) return item;
         if (item.getItemMeta().hasLore()) {
@@ -183,7 +184,7 @@ public class PluginControl {
     }
     
     public static ItemStack addLore(ItemStack item, List<String> list) {
-        List<String> lore = new ArrayList();
+        List<String> lore = new ArrayList<String>();
         ItemMeta m = item.getItemMeta();
         if (m == null) {
             return item;
@@ -411,7 +412,7 @@ public class PluginControl {
     }
     
     public static List<ItemStack> getPage(List<ItemStack> list, Integer page) {
-        List<ItemStack> items = new ArrayList();
+        List<ItemStack> items = new ArrayList<ItemStack>();
         if (page <= 0) page = 1;
         int max = 45;
         int index = page * max - max;
@@ -431,7 +432,7 @@ public class PluginControl {
     }
     
     public static List<Long> getMarketPageUIDs(List<Long> list, Integer page) {
-        List<Long> items = new ArrayList();
+        List<Long> items = new ArrayList<Long>();
         if (page <= 0) page = 1;
         int max = 45;
         int index = page * max - max;
@@ -451,7 +452,7 @@ public class PluginControl {
     }
     
     public static List<Long> getMailPageUIDs(List<Long> list, Integer page) {
-        List<Long> items = new ArrayList();
+        List<Long> items = new ArrayList<Long>();
         if (page <= 0) page = 1;
         int max = 45;
         int index = page * max - max;
@@ -615,7 +616,7 @@ public class PluginControl {
                                 double price = mg.getPrice();
                                 CurrencyManager.addMoney(PluginControl.getOfflinePlayer(owner), price);
                                 CurrencyManager.removeMoney(PluginControl.getOfflinePlayer(winner), price);
-                                HashMap<String, String> placeholders = new HashMap();
+                                HashMap<String, String> placeholders = new HashMap<String, String>();
                                 placeholders.put("%Price%", String.valueOf(mg.getPrice()));
                                 placeholders.put("%price%", String.valueOf(mg.getPrice()));
                                 placeholders.put("%Player%", PluginControl.getOfflinePlayer(winner).getName());
@@ -686,6 +687,8 @@ public class PluginControl {
                             market.removeGoods(mg.getUID());
                             break;
                         }
+					default:
+						break;
                     }
                     shouldSave = true;
                 }
@@ -737,7 +740,7 @@ public class PluginControl {
     }
     
     private static long backupFilesAcquisitionTime = 0;
-    private static List<String> backupFiles = new ArrayList();
+    private static List<String> backupFiles = new ArrayList<String>();
     
     public static List<String> getBackupFiles() {
         /**
@@ -748,7 +751,7 @@ public class PluginControl {
         if (System.currentTimeMillis() - backupFilesAcquisitionTime <= 5000) {
             return backupFiles;
         }
-        List<String> list = new ArrayList();
+        List<String> list = new ArrayList<String>();
         File folder = new File("plugins/CrazyAuctionsPlus/Backup/");
         if (!folder.exists()) return list;
         File[] files = folder.listFiles();
@@ -760,7 +763,7 @@ public class PluginControl {
         return list;
     }
     
-    public static boolean reload(ReloadType type) {
+	public static boolean reload(ReloadType type) {
         FileManager fm = FileManager.getInstance();
         try {
             switch (type) {
