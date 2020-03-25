@@ -13,6 +13,7 @@ public class CommandAuction extends VCommand {
 		this.addSubCommand(new CommandAuctionMail());
 		this.addSubCommand(new CommandAuctionListed());
 		this.addSubCommand(new CommandAuctionSell());
+		this.addSubCommand(new CommandAuctionBid());
 	}
 
 	@Override
