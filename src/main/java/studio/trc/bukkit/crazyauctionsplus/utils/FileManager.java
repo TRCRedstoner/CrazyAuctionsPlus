@@ -1,16 +1,5 @@
 package studio.trc.bukkit.crazyauctionsplus.utils;
 
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -33,6 +22,17 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
+
 import studio.trc.bukkit.crazyauctionsplus.Main;
 import studio.trc.bukkit.crazyauctionsplus.database.GlobalMarket;
 import studio.trc.bukkit.crazyauctionsplus.database.Storage;
@@ -40,10 +40,11 @@ import studio.trc.bukkit.crazyauctionsplus.database.StorageMethod;
 import studio.trc.bukkit.crazyauctionsplus.database.engine.MySQLEngine;
 import studio.trc.bukkit.crazyauctionsplus.database.engine.SQLiteEngine;
 import studio.trc.bukkit.crazyauctionsplus.utils.PluginControl.RollBackMethod;
+import studio.trc.bukkit.crazyauctionsplus.utils.enums.Messages;
 import studio.trc.bukkit.crazyauctionsplus.utils.enums.ShopType;
 import studio.trc.bukkit.crazyauctionsplus.utils.enums.Version;
-import studio.trc.bukkit.crazyauctionsplus.utils.enums.Messages;
 
+@SuppressWarnings("deprecation")
 public class FileManager {
     
     private static final FileManager instance = new FileManager();
@@ -53,11 +54,11 @@ public class FileManager {
     private Main main;
     private String prefix = "[CrazyAuctionsPlus] ";
     private Boolean log = false;
-    private final HashMap<Files, File> files = new HashMap();
-    private final ArrayList<String> homeFolders = new ArrayList();
-    private final ArrayList<CustomFile> customFiles = new ArrayList();
-    private final HashMap<String, String> autoGenerateFiles = new HashMap();
-    private final HashMap<Files, FileConfiguration> configurations = new HashMap();
+    private final HashMap<Files, File> files = new HashMap<Files, File>();
+    private final ArrayList<String> homeFolders = new ArrayList<String>();
+    private final ArrayList<CustomFile> customFiles = new ArrayList<CustomFile>();
+    private final HashMap<String, String> autoGenerateFiles = new HashMap<String, String>();
+    private final HashMap<Files, FileConfiguration> configurations = new HashMap<Files, FileConfiguration>();
     
     public static FileManager getInstance() {
         return instance;
@@ -65,7 +66,7 @@ public class FileManager {
     
     private static CommandSender[] syncSenders = {};
     
-    public static Runnable synchronizeThread = () -> {
+	public static Runnable synchronizeThread = () -> {
         syncing = true;
         
         // Old Data Files
@@ -292,7 +293,7 @@ public class FileManager {
             }
             for (CommandSender sender : FileManager.backupSenders) {
                 if (sender != null) {
-                    Map<String, String> map = new HashMap();
+                    Map<String, String> map = new HashMap<String, String>();
                     map.put("%file%",  fileName);
                     sender.sendMessage(Messages.getMessage("Admin-Command.Backup.Successfully", map));
                 }
@@ -301,7 +302,7 @@ public class FileManager {
         } catch (Exception ex) {
             for (CommandSender sender : FileManager.backupSenders) {
                 if (sender != null) {
-                    Map<String, String> map = new HashMap();
+                    Map<String, String> map = new HashMap<String, String>();
                     map.put("%error%",  ex.getLocalizedMessage() != null ? ex.getLocalizedMessage() : "null");
                     sender.sendMessage(Messages.getMessage("Admin-Command.Backup.Failed", map));
                 }
@@ -880,7 +881,7 @@ public class FileManager {
         private final FileConfiguration config;
         private final Files file;
         
-        private static final Map<Files, FileConfiguration> defaultConfig = new HashMap();
+        private static final Map<Files, FileConfiguration> defaultConfig = new HashMap<Files, FileConfiguration>();
         
         private ProtectedConfiguration(Files file) {
             this.file = file;
