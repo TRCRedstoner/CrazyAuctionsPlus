@@ -453,41 +453,7 @@ public class PluginCommand
                         }
                         return true;
                     }
-                }               
-                if (args[0].equalsIgnoreCase("View")) {
-                    if (!(sender instanceof Player)) {
-                        sender.sendMessage(Messages.getMessage("Players-Only"));
-                        return true;
-                    }
-                    Player player = (Player) sender;
-                    if (PluginControl.isWorldDisabled(player)) {
-                        sender.sendMessage(Messages.getMessage("World-Disabled"));
-                        return true;
-                    }
-                    if (args.length == 1) {
-                        if (!PluginControl.hasCommandPermission(sender, "View", true)) return true;
-                        GUIAction.openViewer(player, player.getUniqueId(), 0);
-                        return true;
-                    }
-                    if (args.length >= 2) {
-                        if (!PluginControl.hasCommandPermission(sender, "View-Others-Player", true)) return true;
-                        Player target = Bukkit.getPlayer(args[1]);
-                        if (target != null) {
-                            GUIAction.openViewer(player, target.getUniqueId(), 1);
-                            return true;
-                        } else {
-                            new BukkitRunnable() {
-                                @Override
-                                public void run() {
-                                    GUIAction.openViewer(player, Bukkit.getOfflinePlayer(args[1]).getUniqueId(), 1);
-                                }
-                            }.runTaskLater(Main.getInstance(), 1);
-                            return true;
-                        }
-                    }
-                    sender.sendMessage(Messages.getMessage("CrazyAuctions-View"));
-                    return true;
-                }                           
+                }                                                      
                 if (args[0].equalsIgnoreCase("Buy")) {
                     if (!(sender instanceof Player)) {
                         sender.sendMessage(Messages.getMessage("Players-Only"));
