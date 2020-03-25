@@ -5,7 +5,7 @@
 * I hope you will like this plugin, and your support is my motivation.;)
 * Depend plugin: Vault.(https://www.spigotmc.org/resources/vault.34315/)
 * Command system added by Maxlego08, based on https://githum.com/Maxlego08/TemplatePlugin
- <sub><sup>Do not hesitate to see the <a href="https://www.spigotmc.org/resources/zauctionhouse-1-7-1-15-auction-house-plugin.63010/">zAuctionhouse</a> plugin, also an auction house plugin but paid. The plugin is more optimized, offers more functionality.</sup></sub>
+* <sub><sup>Do not hesitate to see the <a href="https://www.spigotmc.org/resources/zauctionhouse-1-7-1-15-auction-house-plugin.63010/">zAuctionhouse</a> plugin, also an auction house plugin but paid. The plugin is more optimized, offers more functionality.</sup></sub>
 
 # Features
 
