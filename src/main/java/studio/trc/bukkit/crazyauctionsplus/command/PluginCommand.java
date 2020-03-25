@@ -494,21 +494,7 @@ public class PluginCommand
                     }
                     sender.sendMessage(Messages.getMessage("CrazyAuctions-View"));
                     return true;
-                }
-                if (args[0].equalsIgnoreCase("Mail")) {
-                    if (!PluginControl.hasCommandPermission(sender, "Mail", true)) return true;
-                    if (!(sender instanceof Player)) {
-                        sender.sendMessage(Messages.getMessage("Players-Only"));
-                        return true;
-                    }
-                    Player player = (Player) sender;
-                    if (PluginControl.isWorldDisabled(player)) {
-                        sender.sendMessage(Messages.getMessage("World-Disabled"));
-                        return true;
-                    }
-                    GUIAction.openPlayersMail(player, 1);
-                    return true;
-                }
+                }             
                 if (args[0].equalsIgnoreCase("Listed")) {
                     if (!PluginControl.hasCommandPermission(sender, "Listed", true)) return true;
                     if (!(sender instanceof Player)) {
