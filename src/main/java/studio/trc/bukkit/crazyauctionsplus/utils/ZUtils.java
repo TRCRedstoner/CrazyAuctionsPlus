@@ -3,7 +3,6 @@ package studio.trc.bukkit.crazyauctionsplus.utils;
 import java.util.Arrays;
 
 import org.bukkit.Material;
-import org.bukkit.command.CommandSender;
 
 public abstract class ZUtils {
 
@@ -28,15 +27,6 @@ public abstract class ZUtils {
 	 */
 	protected Material getMaterial(int id) {
 		return byId.length > id && id >= 0 ? byId[id] : null;
-	}
-
-	/**
-	 * 
-	 * @param sender
-	 * @param message
-	 */
-	public void message(CommandSender sender, String message) {
-		sender.sendMessage(message);
 	}
 
 }

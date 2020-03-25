@@ -460,49 +460,7 @@ public class PluginCommand
                         }
                         return true;
                     }
-                }
-                if (args[0].equalsIgnoreCase("Gui")) {
-                    if (!(sender instanceof Player)) {
-                        sender.sendMessage(Messages.getMessage("Players-Only"));
-                        return true;
-                    }
-                    if (!PluginControl.hasCommandPermission(sender, "Gui", true)) return true;
-                    Player player = (Player) sender;
-                    if (PluginControl.isWorldDisabled(player)) {
-                        sender.sendMessage(Messages.getMessage("World-Disabled"));
-                        return true;
-                    }
-                    if (args.length == 1) {
-                        if (Files.CONFIG.getFile().getBoolean("Settings.Category-Page-Opens-First")) {
-                            GUIAction.setShopType(player, ShopType.ANY);
-                            GUIAction.setCategory(player, Category.getDefaultCategory());
-                            GUIAction.openCategories(player, ShopType.ANY);
-                        } else {
-                            GUIAction.openShop(player, ShopType.ANY, Category.getDefaultCategory(), 1);
-                        }
-                        return true;
-                    } else if (args.length == 2) {
-                        if (args[1].equalsIgnoreCase("sell")) {
-                            GUIAction.openShop(player, ShopType.SELL, Category.getDefaultCategory(), 1);
-                            return true;
-                        } else if (args[1].equalsIgnoreCase("buy")) {
-                            GUIAction.openShop(player, ShopType.BUY, Category.getDefaultCategory(), 1);
-                            return true;
-                        } else if (args[1].equalsIgnoreCase("bid")) {
-                            GUIAction.openShop(player, ShopType.BID, Category.getDefaultCategory(), 1);
-                            return true;
-                        } else {
-                            GUIAction.openShop(player, ShopType.ANY, Category.getDefaultCategory(), 1);
-                            return true;
-                        }
-                    } else if (args.length >= 3) {
-                        if (!PluginControl.hasCommandPermission(sender, "Gui-Others-Player", true)) return true;
-                        Player target = Bukkit.getPlayer(args[2]);
-                        if (target == null) {
-                            return true;
-                        }
-                    }
-                }
+                }               
                 if (args[0].equalsIgnoreCase("View")) {
                     if (!(sender instanceof Player)) {
                         sender.sendMessage(Messages.getMessage("Players-Only"));
