@@ -16,6 +16,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import studio.trc.bukkit.crazyauctionsplus.Main;
+import studio.trc.bukkit.crazyauctionsplus.command.commands.CommandAuction;
+import studio.trc.bukkit.crazyauctionsplus.utils.FileManager;
 import studio.trc.bukkit.crazyauctionsplus.utils.PluginControl;
 import studio.trc.bukkit.crazyauctionsplus.utils.enums.Messages;
 
@@ -31,6 +33,14 @@ public class CommandManager implements CommandExecutor {
 	public CommandManager(Main plugin) {
 		super();
 		this.plugin = plugin;
+	}
+
+	public void registerCommands() {
+
+		this.registerCommand("ca", new CommandAuction(), "cap", "crazyauction", "crazyauctions", "crazyauctionsplus");
+
+		this.plugin.log("Loading " + getUniqueCommand() + " commands");
+		this.commandChecking();
 	}
 
 	/**
@@ -85,12 +95,6 @@ public class CommandManager implements CommandExecutor {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public void registerCommands() {
-
-		plugin.log("Loading " + getUniqueCommand() + " commands");
-		this.commandChecking();
 	}
 
 	/**
@@ -180,12 +184,21 @@ public class CommandManager implements CommandExecutor {
 	 */
 	private CommandType processRequirements(VCommand command, CommandSender sender, String[] strings) {
 
+		if (FileManager.isBackingUp()) {
+			sender.sendMessage(Messages.getMessage("Admin-Command.Backup.BackingUp"));
+			return CommandType.DEFAULT;
+		}
+		if (FileManager.isRollingBack()) {
+			sender.sendMessage(Messages.getMessage("Admin-Command.RollBack.RollingBack"));
+			return CommandType.DEFAULT;
+		}
+
 		if (!(sender instanceof Player) && !command.isConsoleCanUse()) {
 			sender.sendMessage(Messages.getMessage("Players-Only"));
 			return CommandType.DEFAULT;
 		}
-		if (command.getPermission() == null
-				|| PluginControl.hasCommandPermission(sender, command.getPermission(), true)) {
+
+		if (command.getPermission() == null || PluginControl.hasCommandPermission(sender, command.getPermission(), true)) {
 			CommandType returnType = command.prePerform(plugin, sender, strings);
 			if (returnType == CommandType.SYNTAX_ERROR)
 				sender.sendMessage(PluginControl.getPrefix() + command.getSyntaxe());

@@ -64,7 +64,7 @@ Chinese:
     CrazyAuctions-Sell: '{prefix}&c你的命令有误， 正确使用方法: /Ca sell [价格] [数量]'
     CrazyAuctions-Bid: '{prefix}&c你的命令有误， 正确使用方法: /Ca bid [价格] [数量]'
     CrazyAuctions-Buy: '{prefix}&c你的命令有误， 正确使用方法: /Ca buy [报酬] [数量] [物品]'
-    CrazyAuctions-Main: '{prefix}&6插件所运行的版本: &a{version} &6, 由&cBadBones69&6与&cTRCRedstoner&7(TRC Studio)&6制作。'
+    CrazyAuctions-Main: '{prefix}&6插件所运行的版本: &a{version} &6, 由&cBadBones69&6,&cMaxlego08&6与&cTRCRedstoner&7(TRC Studio)&6制作。'
     Date-Settings:
         Second: 秒
         Minute: 分钟
@@ -288,7 +288,7 @@ English:
     CrazyAuctions-Sell: '{prefix}&c/Ca sell <price> [amount of items]'
     CrazyAuctions-Bid: '{prefix}&c/Ca bid <price> [amount of items]'
     CrazyAuctions-Buy: '{prefix}&c/Ca buy <reward> [amount of items] [item name]'
-    CrazyAuctions-Main: '{prefix}&6Plug-in version running: &a{version} &6, Written and produced by &cBadBones69 &6and &cTRCRedstoner &7(TRC Studio)&6.'
+    CrazyAuctions-Main: '{prefix}&6Plug-in version running: &a{version} &6, Written and produced by &cBadBones69&6, &cMaxlego08 &6and &cTRCRedstoner &7(TRC Studio)&6.'
     Date-Settings:
         Second: second
         Minute: minute

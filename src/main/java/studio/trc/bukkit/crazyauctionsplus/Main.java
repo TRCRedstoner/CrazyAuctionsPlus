@@ -93,12 +93,6 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new EasyCommand(), this);
 		pm.registerEvents(new ShopSign(), this);
 		pm.registerEvents(new AuctionEvents(), this);
-		PluginCommand pc = new PluginCommand();
-		getCommand("CrazyAuctionsPlus").setExecutor(pc);
-		getCommand("CrazyAuctions").setExecutor(pc);
-		getCommand("CrazyAuction").setExecutor(pc);
-		getCommand("CA").setExecutor(pc);
-		getCommand("CAP").setExecutor(pc);
 
 		commandManager.registerCommands();
 
