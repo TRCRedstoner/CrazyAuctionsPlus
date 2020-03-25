@@ -16,7 +16,6 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import studio.trc.bukkit.crazyauctionsplus.command.CommandManager;
-import studio.trc.bukkit.crazyauctionsplus.command.PluginCommand;
 import studio.trc.bukkit.crazyauctionsplus.currency.Vault;
 import studio.trc.bukkit.crazyauctionsplus.database.GlobalMarket;
 import studio.trc.bukkit.crazyauctionsplus.database.engine.MySQLEngine;
@@ -25,17 +24,17 @@ import studio.trc.bukkit.crazyauctionsplus.database.storage.MySQLStorage;
 import studio.trc.bukkit.crazyauctionsplus.database.storage.SQLiteStorage;
 import studio.trc.bukkit.crazyauctionsplus.events.AuctionEvents;
 import studio.trc.bukkit.crazyauctionsplus.events.EasyCommand;
-import studio.trc.bukkit.crazyauctionsplus.events.Join;
 import studio.trc.bukkit.crazyauctionsplus.events.GUIAction;
+import studio.trc.bukkit.crazyauctionsplus.events.Join;
 import studio.trc.bukkit.crazyauctionsplus.events.Quit;
 import studio.trc.bukkit.crazyauctionsplus.events.ShopSign;
-import studio.trc.bukkit.crazyauctionsplus.utils.enums.Messages;
-import studio.trc.bukkit.crazyauctionsplus.utils.MarketGoods;
-import studio.trc.bukkit.crazyauctionsplus.utils.PluginControl;
 import studio.trc.bukkit.crazyauctionsplus.utils.CrazyAuctions;
 import studio.trc.bukkit.crazyauctionsplus.utils.FileManager;
+import studio.trc.bukkit.crazyauctionsplus.utils.MarketGoods;
+import studio.trc.bukkit.crazyauctionsplus.utils.PluginControl;
 import studio.trc.bukkit.crazyauctionsplus.utils.PluginControl.ReloadType;
 import studio.trc.bukkit.crazyauctionsplus.utils.PluginControl.RollBackMethod;
+import studio.trc.bukkit.crazyauctionsplus.utils.enums.Messages;
 
 public class Main extends JavaPlugin {
 

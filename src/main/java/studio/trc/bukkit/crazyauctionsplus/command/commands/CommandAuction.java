@@ -17,6 +17,7 @@ public class CommandAuction extends VCommand {
 		this.addSubCommand(new CommandAuctionBid());
 		this.addSubCommand(new CommandAuctionView());
 		this.addSubCommand(new CommandAuctionBuy());
+		this.addSubCommand(new CommandAuctionHelp());
 		this.addSubCommand(new CommandAuctionAdmin());
 	}
 
