@@ -1,4 +1,4 @@
-package studio.trc.bukkit.crazyauctionsplus.command.commands.admin;
+package studio.trc.bukkit.crazyauctionsplus.command.commands.admin.collections;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -3,6 +3,7 @@ package studio.trc.bukkit.crazyauctionsplus.command.commands.admin;
 import studio.trc.bukkit.crazyauctionsplus.Main;
 import studio.trc.bukkit.crazyauctionsplus.command.CommandType;
 import studio.trc.bukkit.crazyauctionsplus.command.VCommand;
+import studio.trc.bukkit.crazyauctionsplus.command.commands.admin.collections.CommandAuctionAdminItemCollection;
 import studio.trc.bukkit.crazyauctionsplus.utils.enums.Messages;
 
 public class CommandAuctionAdmin extends VCommand {

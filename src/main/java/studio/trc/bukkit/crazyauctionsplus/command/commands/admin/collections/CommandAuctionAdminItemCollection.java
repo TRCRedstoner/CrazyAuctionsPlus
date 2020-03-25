@@ -1,4 +1,4 @@
-package studio.trc.bukkit.crazyauctionsplus.command.commands.admin;
+package studio.trc.bukkit.crazyauctionsplus.command.commands.admin.collections;
 
 import studio.trc.bukkit.crazyauctionsplus.Main;
 import studio.trc.bukkit.crazyauctionsplus.command.CommandType;
