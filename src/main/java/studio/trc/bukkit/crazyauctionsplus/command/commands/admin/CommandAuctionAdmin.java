@@ -13,6 +13,8 @@ public class CommandAuctionAdmin extends VCommand {
 		
 		this.addSubCommand(new CommandAuctionAdminBackup());
 		this.addSubCommand(new CommandAuctionAdminRollBack());
+		this.addSubCommand(new CommandAuctionAdminInfo());
+		this.addSubCommand(new CommandAuctionAdminSynchronize());
 	}
 
 	@Override
