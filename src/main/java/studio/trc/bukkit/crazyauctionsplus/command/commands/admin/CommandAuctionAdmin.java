@@ -15,6 +15,7 @@ public class CommandAuctionAdmin extends VCommand {
 		this.addSubCommand(new CommandAuctionAdminRollBack());
 		this.addSubCommand(new CommandAuctionAdminInfo());
 		this.addSubCommand(new CommandAuctionAdminSynchronize());
+		this.addSubCommand(new CommandAuctionAdminItemCollection());
 	}
 
 	@Override
