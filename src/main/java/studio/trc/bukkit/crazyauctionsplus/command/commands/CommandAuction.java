@@ -9,6 +9,7 @@ public class CommandAuction extends VCommand {
 
 	public CommandAuction() {
 		this.setPermission("Access");
+		this.addSubCommand(new CommandAuctionGui());
 	}
 
 	@Override

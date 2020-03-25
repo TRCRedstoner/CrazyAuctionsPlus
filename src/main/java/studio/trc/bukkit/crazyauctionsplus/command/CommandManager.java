@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandMap;
@@ -198,10 +199,11 @@ public class CommandManager implements CommandExecutor {
 			return CommandType.DEFAULT;
 		}
 
-		if (command.getPermission() == null || PluginControl.hasCommandPermission(sender, command.getPermission(), true)) {
+		if (command.getPermission() == null
+				|| PluginControl.hasCommandPermission(sender, command.getPermission(), true)) {
 			CommandType returnType = command.prePerform(plugin, sender, strings);
 			if (returnType == CommandType.SYNTAX_ERROR)
-				sender.sendMessage(PluginControl.getPrefix() + command.getSyntaxe());
+				sender.sendMessage(PluginControl.color(PluginControl.getPrefix() + ChatColor.WHITE + command.getSyntaxe()));
 			return returnType;
 		}
 		return CommandType.DEFAULT;

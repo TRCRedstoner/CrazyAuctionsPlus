@@ -17,7 +17,6 @@ public abstract class VCommand extends Arguments {
 	 * execute the command
 	 */
 	private String permission;
-	
 
 	/**
 	 * Mother command of this command
@@ -56,7 +55,7 @@ public abstract class VCommand extends Arguments {
 	protected CommandSender sender;
 	protected Player player;
 	protected Main plugin;
-	protected boolean DEBUG = false;
+	protected boolean DEBUG = true;
 
 	/**
 	 * @return the permission
@@ -238,7 +237,7 @@ public abstract class VCommand extends Arguments {
 	 */
 	public VCommand addSubCommand(VCommand command) {
 		command.setParent(this);
-		plugin.getCommandManager().addCommand(command);
+		(plugin == null ? plugin = Main.m : plugin).getCommandManager().addCommand(command);
 		this.subVCommands.add(command);
 		return this;
 	}
@@ -296,7 +295,7 @@ public abstract class VCommand extends Arguments {
 	public CommandType prePerform(Main main, CommandSender commandSender, String[] args) {
 
 		this.plugin = main;
-		
+
 		parentCount = parentCount(0);
 		argsMaxLength = requireArgs.size() + optionalArgs.size() + parentCount;
 		argsMinLength = requireArgs.size() + parentCount;
@@ -340,6 +339,7 @@ public abstract class VCommand extends Arguments {
 
 	/**
 	 * lets you know if the class girls have the same subcommands
+	 * 
 	 * @return
 	 */
 	public boolean sameSubCommands() {
