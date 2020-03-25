@@ -47,7 +47,7 @@ public class AuctionProcess
                         double price = mg.getPrice();
                         CurrencyManager.addMoney(PluginControl.getOfflinePlayer(owner), price);
                         CurrencyManager.removeMoney(PluginControl.getOfflinePlayer(winner), price);
-                        HashMap<String, String> placeholders = new HashMap();
+                        HashMap<String, String> placeholders = new HashMap<String, String>();
                         placeholders.put("%Price%", String.valueOf(mg.getPrice()));
                         placeholders.put("%price%", String.valueOf(mg.getPrice()));
                         placeholders.put("%Player%", PluginControl.getOfflinePlayer(winner).getName());

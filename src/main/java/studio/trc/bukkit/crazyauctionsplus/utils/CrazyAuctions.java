@@ -64,12 +64,13 @@ public class CrazyAuctions {
                 }
                 return number;
             }
+		default:
+			return number;
         }
-        return number;
     }
     
     public List<MarketGoods> getMarketItems(Player player) {
-        List<MarketGoods> items = new ArrayList();
+        List<MarketGoods> items = new ArrayList<MarketGoods>();
         GlobalMarket market = GlobalMarket.getMarket();
         if (!market.getItems().isEmpty()) {
             for (MarketGoods mg : market.getItems()) {

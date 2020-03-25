@@ -174,7 +174,7 @@ public class Main
                             MarketGoods mg  = (MarketGoods) GUIAction.repricing.get(value)[0];
                             Player p = Bukkit.getPlayer(value);
                             if (p != null) {
-                                Map<String, String> placeholders = new HashMap();
+                                Map<String, String> placeholders = new HashMap<String, String>();
                                 try {
                                     placeholders.put("%item%", mg.getItem().getItemMeta().hasDisplayName() ? mg.getItem().getItemMeta().getDisplayName() : (String) mg.getItem().getClass().getMethod("getI18NDisplayName").invoke(mg.getItem()));
                                 } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {

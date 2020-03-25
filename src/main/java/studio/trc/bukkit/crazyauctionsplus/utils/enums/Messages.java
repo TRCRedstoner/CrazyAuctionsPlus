@@ -136,7 +136,7 @@ public enum Messages {
     }
     
     public static List<String> getMessageList(String path) {
-        List<String> list = new ArrayList();
+        List<String> list = new ArrayList<String>();
         ProtectedConfiguration config = Files.CONFIG.getFile();
         for (String message : Files.MESSAGES.getFile().getStringList(config.getString("Settings.Language") + "." + path)) {
             list.add(PluginControl.color(message.replace("{prefix}", config.getString("Settings.Prefix"))));

@@ -12,7 +12,7 @@ import studio.trc.bukkit.crazyauctionsplus.utils.FileManager.*;
 
 public class Category {
     
-    public static final List<Category> collection = new ArrayList();
+    public static final List<Category> collection = new ArrayList<Category>();
     
     private final String name;
     private final List<Material> items;
@@ -26,7 +26,7 @@ public class Category {
     private Category(String name, List<Material> items) {
         this.name = name;
         this.items = items;
-        itemMeta = new ArrayList();
+        itemMeta = new ArrayList<ItemMeta>();
         displayName = Files.CATEGORY.getFile().getString("Category." + name + ".Display-Name");
         whitelist = Files.CATEGORY.getFile().getBoolean("Category." + name + ".Whitelist");
     }
@@ -46,8 +46,8 @@ public class Category {
      */
     public static Category getModule(String moduleName) {
         if (moduleName == null) return null;
-        List<Material> materialList = new ArrayList();
-        List<ItemMeta> metaList = new ArrayList();
+        List<Material> materialList = new ArrayList<Material>();
+        List<ItemMeta> metaList = new ArrayList<ItemMeta>();
         ProtectedConfiguration cat = Files.CATEGORY.getFile();
         if (cat.get("Category") != null) {
             if (cat.get("Category." + moduleName) == null) {
@@ -101,7 +101,7 @@ public class Category {
             if (cat.getBoolean("Category." + moduleName + ".Whitelist")) {
                 return new Category(moduleName, materialList, metaList);
             } else {
-                List<Material> newList = new ArrayList();
+                List<Material> newList = new ArrayList<Material>();
                 for (Material m : Material.values()) {
                     if (!materialList.contains(m)) {
                         newList.add(m);
@@ -115,7 +115,7 @@ public class Category {
     }
     
     public static List<String> getModuleNameList() {
-        List<String> list = new ArrayList();
+        List<String> list = new ArrayList<String>();
         ProtectedConfiguration cat = Files.CATEGORY.getFile();
         if (cat.get("Category") != null) {
             for (String name : cat.getConfigurationSection("Category").getKeys(false)) {
@@ -136,7 +136,7 @@ public class Category {
     }
     
     public static List<Category> getCategoryModules() {
-        List<Category> list = new ArrayList();
+        List<Category> list = new ArrayList<Category>();
         for (String name : getModuleNameList()) {
             Category module = getModule(name);
             if (module != null) {
