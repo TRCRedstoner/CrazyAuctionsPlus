@@ -70,14 +70,7 @@ public class PluginCommand
                 sender.sendMessage(Messages.getMessage("CrazyAuctions-Main").replace("{version}", Main.getInstance().getDescription().getVersion()));
                 return true;
             }
-            if (args.length >= 1) {
-                if (args[0].equalsIgnoreCase("Help")) {
-                    if (!PluginControl.hasCommandPermission(sender, "Help", true)) return true;
-                    for (String message : Messages.getMessageList("Help-Menu")) {
-                        sender.sendMessage(message);
-                    }
-                    return true;
-                }
+            if (args.length >= 1) {              
                 if (args[0].equalsIgnoreCase("Reload")) {
                     if (!PluginControl.hasCommandPermission(sender, "Reload", true)) return true;
                     if (args.length == 1) {

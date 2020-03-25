@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import studio.trc.bukkit.crazyauctionsplus.Main;
 import studio.trc.bukkit.crazyauctionsplus.utils.Arguments;
+import studio.trc.bukkit.crazyauctionsplus.utils.CrazyAuctions;
+import studio.trc.bukkit.crazyauctionsplus.utils.enums.Version;
 
+@SuppressWarnings("deprecation")
 public abstract class VCommand extends Arguments {
 
 	/**
@@ -56,6 +60,7 @@ public abstract class VCommand extends Arguments {
 	protected Player player;
 	protected Main plugin;
 	protected boolean DEBUG = true;
+	protected CrazyAuctions crazyAuctions = CrazyAuctions.getInstance();
 
 	/**
 	 * @return the permission
@@ -362,4 +367,79 @@ public abstract class VCommand extends Arguments {
 				+ consoleCanUse + ", description=" + description + "]";
 	}
 
+	  
+	protected ArrayList<Material> getDamageableItems() {
+        ArrayList<Material> ma = new ArrayList<Material>();
+        if (Version.getCurrentVersion().isNewer(Version.v1_12_R1)) {
+            ma.add(Material.matchMaterial("GOLDEN_HELMET"));
+            ma.add(Material.matchMaterial("GOLDEN_CHESTPLATE"));
+            ma.add(Material.matchMaterial("GOLDEN_LEGGINGS"));
+            ma.add(Material.matchMaterial("GOLDEN_BOOTS"));
+            ma.add(Material.matchMaterial("WOODEN_SWORD"));
+            ma.add(Material.matchMaterial("WOODEN_AXE"));
+            ma.add(Material.matchMaterial("WOODEN_PICKAXE"));
+            ma.add(Material.matchMaterial("WOODEN_AXE"));
+            ma.add(Material.matchMaterial("WOODEN_SHOVEL"));
+            ma.add(Material.matchMaterial("STONE_SHOVEL"));
+            ma.add(Material.matchMaterial("IRON_SHOVEL"));
+            ma.add(Material.matchMaterial("DIAMOND_SHOVEL"));
+            ma.add(Material.matchMaterial("WOODEN_HOE"));
+            ma.add(Material.matchMaterial("GOLDEN_HOE"));
+            ma.add(Material.matchMaterial("CROSSBOW"));
+            ma.add(Material.matchMaterial("TRIDENT"));
+            ma.add(Material.matchMaterial("TURTLE_HELMET"));
+        } else {
+            ma.add(Material.matchMaterial("GOLD_HELMET"));
+            ma.add(Material.matchMaterial("GOLD_CHESTPLATE"));
+            ma.add(Material.matchMaterial("GOLD_LEGGINGS"));
+            ma.add(Material.matchMaterial("GOLD_BOOTS"));
+            ma.add(Material.matchMaterial("WOOD_SWORD"));
+            ma.add(Material.matchMaterial("WOOD_AXE"));
+            ma.add(Material.matchMaterial("WOOD_PICKAXE"));
+            ma.add(Material.matchMaterial("WOOD_AXE"));
+            ma.add(Material.matchMaterial("WOOD_SPADE"));
+            ma.add(Material.matchMaterial("STONE_SPADE"));
+            ma.add(Material.matchMaterial("IRON_SPADE"));
+            ma.add(Material.matchMaterial("DIAMOND_SPADE"));
+            ma.add(Material.matchMaterial("WOOD_HOE"));
+            ma.add(Material.matchMaterial("GOLD_HOE"));
+        }
+        ma.add(Material.DIAMOND_HELMET);
+        ma.add(Material.DIAMOND_CHESTPLATE);
+        ma.add(Material.DIAMOND_LEGGINGS);
+        ma.add(Material.DIAMOND_BOOTS);
+        ma.add(Material.CHAINMAIL_HELMET);
+        ma.add(Material.CHAINMAIL_CHESTPLATE);
+        ma.add(Material.CHAINMAIL_LEGGINGS);
+        ma.add(Material.CHAINMAIL_BOOTS);
+        ma.add(Material.IRON_HELMET);
+        ma.add(Material.IRON_CHESTPLATE);
+        ma.add(Material.IRON_LEGGINGS);
+        ma.add(Material.IRON_BOOTS);
+        ma.add(Material.LEATHER_HELMET);
+        ma.add(Material.LEATHER_CHESTPLATE);
+        ma.add(Material.LEATHER_LEGGINGS);
+        ma.add(Material.LEATHER_BOOTS);
+        ma.add(Material.BOW);
+        ma.add(Material.STONE_SWORD);
+        ma.add(Material.IRON_SWORD);
+        ma.add(Material.DIAMOND_SWORD);
+        ma.add(Material.STONE_AXE);
+        ma.add(Material.IRON_AXE);
+        ma.add(Material.DIAMOND_AXE);
+        ma.add(Material.STONE_PICKAXE);
+        ma.add(Material.IRON_PICKAXE);
+        ma.add(Material.DIAMOND_PICKAXE);
+        ma.add(Material.STONE_AXE);
+        ma.add(Material.IRON_AXE);
+        ma.add(Material.DIAMOND_AXE);
+        ma.add(Material.STONE_HOE);
+        ma.add(Material.IRON_HOE);
+        ma.add(Material.DIAMOND_HOE);
+        ma.add(Material.FLINT_AND_STEEL);
+        ma.add(Material.ANVIL);
+        ma.add(Material.FISHING_ROD);
+        return ma;
+    }
+	
 }
