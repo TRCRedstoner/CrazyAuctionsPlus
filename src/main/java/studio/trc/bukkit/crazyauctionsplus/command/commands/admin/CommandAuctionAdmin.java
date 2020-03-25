@@ -4,6 +4,7 @@ import studio.trc.bukkit.crazyauctionsplus.Main;
 import studio.trc.bukkit.crazyauctionsplus.command.CommandType;
 import studio.trc.bukkit.crazyauctionsplus.command.VCommand;
 import studio.trc.bukkit.crazyauctionsplus.command.commands.admin.collections.CommandAuctionAdminItemCollection;
+import studio.trc.bukkit.crazyauctionsplus.command.commands.admin.reload.CommandAuctionAdminReload;
 import studio.trc.bukkit.crazyauctionsplus.utils.enums.Messages;
 
 public class CommandAuctionAdmin extends VCommand {
@@ -17,6 +18,7 @@ public class CommandAuctionAdmin extends VCommand {
 		this.addSubCommand(new CommandAuctionAdminInfo());
 		this.addSubCommand(new CommandAuctionAdminSynchronize());
 		this.addSubCommand(new CommandAuctionAdminItemCollection());
+		this.addSubCommand(new CommandAuctionAdminReload());
 	}
 
 	@Override
